@@ -164,6 +164,7 @@ mod_add_data_ui <- function(id, label = "Add Occurrence Data"){
 #' @importFrom data.table fread
 #' @importFrom shinyjs runjs
 #' @importFrom bdutilities summarizeDataframe
+#' @importFrom lazyeval lazy_eval
 #' @import DT leaflet
 mod_add_data_server <- function(input, output, session, next_button_id = "dataToConfigureDiv"){
     ns <- session$ns
@@ -176,7 +177,19 @@ mod_add_data_server <- function(input, output, session, next_button_id = "dataTo
     
     observeEvent(input$queryDatabase, {
         withProgress(message = paste("Querying", input$queryDB, "..."), {
-            if (input$queryDB == "gbif") {
+            
+            if (grepl("::", input$scientificName, fixed = T) ||
+                grepl(":::", input$scientificName, fixed = T)) {
+                returnData <<- tryCatch({
+                    lazyeval::lazy_eval(input$scientificName)
+                },
+                error = function(cond) {
+                    showNotification(paste(cond, collapse = " "),
+                                     duration = 6)
+                })
+                mapData <<- returnData
+                
+            } else if (input$queryDB == "gbif") {
                 data <-
                     rgbif::occ_search(
                         scientificName = input$scientificName,
