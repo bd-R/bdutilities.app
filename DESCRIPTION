@@ -1,9 +1,9 @@
 Package: bdutilities.app
 Title: Reusable Supporting UI Functions Across the bdverse
-Version: 0.2.2
+Version: 0.2.3
 Description: Shared Shiny modules across the bdverse apps.
 License: GPL-3
-Date: 2021-07-01
+Date: 2021-07-08
 Authors@R: c(
     person(
         "Thiloshon", "Nagarajah",
