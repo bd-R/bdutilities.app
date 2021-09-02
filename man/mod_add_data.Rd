@@ -7,8 +7,12 @@
 \usage{
 mod_add_data_ui(id, label = "Add Occurrence Data")
 
-mod_add_data_server(input, output, session,
-  next_button_id = "dataToConfigureDiv")
+mod_add_data_server(
+  input,
+  output,
+  session,
+  next_button_id = "dataToConfigureDiv"
+)
 }
 \arguments{
 \item{id}{shiny id}
