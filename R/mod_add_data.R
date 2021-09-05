@@ -165,7 +165,7 @@ mod_add_data_ui <- function(id, label = "Add Occurrence Data"){
 #' @importFrom shinyjs runjs
 #' @importFrom bdutilities summarizeDataframe
 #' @importFrom lazyeval lazy_eval
-#' @import DT leaflet
+#' @import leaflet
 mod_add_data_server <- function(input, output, session, next_button_id = "dataToConfigureDiv"){
     ns <- session$ns
     
