@@ -178,18 +178,7 @@ mod_add_data_server <- function(input, output, session, next_button_id = "dataTo
     observeEvent(input$queryDatabase, {
         withProgress(message = paste("Querying", input$queryDB, "..."), {
             
-            if (grepl("::", input$scientificName, fixed = T) ||
-                grepl(":::", input$scientificName, fixed = T)) {
-                returnData <<- tryCatch({
-                    lazyeval::lazy_eval(input$scientificName)
-                },
-                error = function(cond) {
-                    showNotification(paste(cond, collapse = " "),
-                                     duration = 6)
-                })
-                mapData <<- returnData
-                
-            } else if (input$queryDB == "gbif") {
+            if (input$queryDB == "gbif") {
                 data <-
                     rgbif::occ_search(
                         scientificName = input$scientificName,
