@@ -58,7 +58,6 @@ mod_add_data_ui <- function(id, label = "Add Occurrence Data"){
                             choices = list(
                                 "GBIF (Global Biodiversity Information Facility)" = "gbif",
                                 "iDigBio (Integrated Digitized Biocollections)" = "idigbio",
-                                "EcoEngine (Berkeley Ecoinformatics Engine)" = "ecoengine",
                                 "Vertnet (Vertebrate Network)" = "vertnet",
                                 "BISON (Biodiversity Information Serving Our Nation)" = "bison",
                                 "iNaturalist" = "inat",
